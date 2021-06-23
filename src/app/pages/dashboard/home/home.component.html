@@ -5,17 +5,55 @@
       <p></p>
       <h3>LED</h3>
       <p>Led State: On/Off</p>
-      <button class="btn btn-primary">Toggle Led</button>
+      <button class="btn btn-primary" (click)="toggleLed()">Toggle Led</button>
       <hr />
       <h3>LCD</h3>
       <p></p>
-      <input />
+      <form autocomplete="off" novalidate
+      [formGroup]="messageForm"
+      (ngSubmit)="sendMessage()"
+      >
+      <div class="form-row">
+        <div class=" col-lg-12">
+            <label class=" form-control-label" for="message">
+            Message
+            </label>
+            <input  class=" form-control"
+                    id="message"
+                    placeholder="Message"
+                    type="text"
+                    formControlName="message"
+            />
+            <div class=" valid-feedback">Looks good!</div>
+            <div class=" invalid-feedback">Please enter message.</div>
+          </div>
+        </div>
       <button class="btn btn-primary">Send Message</button>
+      </form>
       <hr />
       <h3>Send Message</h3>
       <p></p>
-      <input />
+      <form autocomplete="off" novalidate
+      [formGroup]="consoleMessageForm"
+      (ngSubmit)="sendConsoleMessage()"
+      >
+      <div class="form-row">
+        <div class=" col-lg-12">
+            <label class=" form-control-label" for="consoleMessage">
+            Message
+            </label>
+            <input  class=" form-control"
+                    id="consoleMessage"
+                    placeholder="Console Message"
+                    type="text"
+                    formControlName="consoleMessage"
+            />
+            <div class=" valid-feedback">Looks good!</div>
+            <div class=" invalid-feedback">Please enter console message.</div>
+          </div>
+        </div>
       <button class="btn btn-primary">Send Console Message</button>
+    </form>
     </div>
   </div>
 </div>
