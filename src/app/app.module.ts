@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { SplashScreenStateService } from './services/splash-screen-state.service';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { HomepageResolver } from './resolvers/homepage.resolver';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarComponent,
     FooterComponent,
     LoadingComponent,
+    SplashScreenComponent,
   ],
   imports: [
     FormsModule,
@@ -35,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
       preventDuplicates: false,
     }),
   ],
-  providers: [],
+  providers: [SplashScreenStateService,
+    HomepageResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

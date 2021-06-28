@@ -5,6 +5,8 @@ import { LoadingService } from 'src/app/components/loading/loading.service';
 import { LcdMessage } from 'src/app/services/models/lcd-message';
 import { RaspberryPiService } from 'src/app/services/raspberry-pi.service';
 import { filter, tap } from 'rxjs/operators';
+import { SplashScreenStateService } from 'src/app/services/splash-screen-state.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,9 @@ export class HomeComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private raspberryPiService: RaspberryPiService,
               private alertService: AlertService,
-              private loadingService: LoadingService) {
+              private loadingService: LoadingService,
+              private splashScreenStateService: SplashScreenStateService,
+              private activatedRoute: ActivatedRoute) {
     this.messageForm = fb.group({
       message: ['', Validators.required]
     });
@@ -32,6 +36,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.snapshot.data.itemsList
+    .subscribe(res => {
+       console.log({ res });
+    })
   }
 
 
